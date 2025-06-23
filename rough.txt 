@@ -1,0 +1,59 @@
+ <img src="gallery/1.jpg" alt="">
+      <img src="gallery/2.jpg" alt="">
+      <img src="gallery/3.jpg" alt="">
+      <img src="gallery/4.jpg" alt="">
+      <img src="gallery/5.jpg" alt="">
+      <img src="gallery/6.jpg" alt="">
+      <img src="" alt="">
+      <img src="" alt="">
+      <img src="" alt="">
+      <img src="" alt="">
+      <img src="" alt="">
+      <img src="" alt="">
+      <img src="" alt="">
+      <img src="" alt="">
+      <img src="" alt="">
+      <img src="" alt="">
+      <img src="" alt="">
+      <img src="" alt="">
+      <img src="" alt="">
+      <img src="" alt="">
+      <img src="" alt="">
+      <img src="" alt="">
+      <img src="" alt="">
+      <img src="" alt="">
+      <img src="" alt="">
+      <img src="" alt="">
+
+
+
+
+
+
+
+      <section class="buttons">
+      <a href="places.html" class="card">📍 Famous Places</a>
+      <a href="itineraries.html" class="card">🗓️ Itineraries</a>
+      <a href="hotels.html" class="card">🛏️  Hotels & Homestays</a>
+      <a href="tips.html" class="card">🧭 Travel Tips</a>
+    </section>
+
+
+
+
+
+     <div class="search-box">
+    <input type="text" id="searchInput" placeholder="Search..." />
+    <button class="search-btn" onclick="handleSearch()">Search</button>
+  </div>
+
+<script>
+  function handleSearch() {
+    const query = document.getElementById("searchInput").value.trim();
+    if (query !== "") {
+      const googleSearchURL = `https://www.google.com/search?q=${encodeURIComponent(query + " in Kanyakumari")}`;
+      window.open(googleSearchURL, "_blank");
+    } else {
+      alert("Please enter a search term.");
+    }
+  }
