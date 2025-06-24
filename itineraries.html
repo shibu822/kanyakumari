@@ -19,15 +19,23 @@
       padding: 20px 40px;
       background: white;
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      flex-wrap: wrap;
     }
     header h1 {
       font-size: 22px;
+      margin: 0;
+    }
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
     }
     nav a {
-      margin-left: 20px;
       text-decoration: none;
       color: #333;
       font-weight: 500;
+      font-size: 14px;
     }
     nav a.active {
       color: #2b57d8;
@@ -51,7 +59,7 @@
       color: #555;
     }
 
-        .notification-bar {
+    .notification-bar {
       background: #ffedd5;
       color: #b45309;
       padding: 0.6rem;
@@ -152,6 +160,7 @@
       border-radius: 6px;
       cursor: pointer;
       font-weight: bold;
+      width: 100%;
     }
 
     .result-box {
@@ -180,12 +189,89 @@
       font-size: 0.9rem;
     }
 
+    /* Responsive Styles */
     @media (max-width: 768px) {
-      .itinerary-cards {
+      header {
         flex-direction: column;
+        align-items: flex-start;
+        padding: 15px 20px;
       }
+
+      header h1 {
+        font-size: 20px;
+        margin-bottom: 10px;
+      }
+
+      .container {
+        padding: 20px;
+      }
+
+      .title {
+        font-size: 28px;
+      }
+
+      .subtitle {
+        font-size: 16px;
+        margin-bottom: 20px;
+      }
+
+      .popular-section h2 {
+        font-size: 20px;
+      }
+
+      .card-content h3 {
+        font-size: 16px;
+      }
+
+      .card-content p {
+        font-size: 13px;
+      }
+
       .bottom-section {
         flex-direction: column;
+        gap: 20px;
+      }
+
+      .travel-form input,
+      .travel-form button {
+        font-size: 14px;
+      }
+
+      .notification-bar,
+      .notification-bar:hover {
+        font-size: 13px;
+        padding: 0.5rem;
+      }
+
+      footer {
+        font-size: 0.8rem;
+        padding: 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .title {
+        font-size: 24px;
+      }
+
+      .subtitle {
+        font-size: 15px;
+      }
+
+      .card img {
+        height: 140px;
+      }
+
+      .travel-form input {
+        padding: 8px;
+      }
+
+      .travel-form button {
+        padding: 10px;
+      }
+
+      .result-box {
+        font-size: 13px;
       }
     }
   </style>
@@ -201,14 +287,15 @@
       <a href="travel-tips.html">Travel Tips</a>
     </nav>
   </header>
+
   <div class="notification-bar" onclick="location.href='https://www.instagram.com/pocketlensproduction/'">
-     📸 Need a videographer/photographer in Kanyakumari? Check out pocket lens prodection – Click here!
+    📸 Need a videographer/photographer in Kanyakumari? Check out pocket lens prodection – Click here!
   </div>
+
   <div style="background: #fffae6; color: #333; text-align: center; padding: 10px; font-weight: bold; font-size: 14px;">
-  📢 For personalized travel assistance, <a href="tel:7904027064" style="color: #2b57d8; text-decoration: underline;">contact Outbound Travelers</a>.
-</div>
-
-
+    📢 For personalized travel assistance, 
+    <a href="tel:7904027064" style="color: #2b57d8; text-decoration: underline;">contact Outbound Travelers</a>.
+  </div>
 
   <div class="container">
     <div class="title">Explore Kanyakumari Itineraries</div>
@@ -270,38 +357,36 @@
   </footer>
 
   <script>
-  function generateItinerary() {
-    const date = document.getElementById("travelDate").value;
-    const duration = document.getElementById("travelDuration").value;
-    const preferences = document.getElementById("preferences").value.toLowerCase();
-    const resultBox = document.getElementById("itineraryResult");
+    function generateItinerary() {
+      const date = document.getElementById("travelDate").value;
+      const duration = document.getElementById("travelDuration").value;
+      const preferences = document.getElementById("preferences").value.toLowerCase();
+      const resultBox = document.getElementById("itineraryResult");
 
-    let suggestion = "Here's a custom itinerary based on your preferences:";
+      let suggestion = "Here's a custom itinerary based on your preferences:";
 
-    if (preferences.includes("beach")) {
-      suggestion += "\n🌅 Start with sunrise at Kanyakumari Beach and visit Triveni Sangam.";
+      if (preferences.includes("beach")) {
+        suggestion += "\n🌅 Start with sunrise at Kanyakumari Beach and visit Triveni Sangam.";
+      }
+      if (preferences.includes("temple")) {
+        suggestion += "\n🛕 Explore Suchindram Temple and Bhagavathy Amman Temple.";
+      }
+      if (preferences.includes("culture") || preferences.includes("heritage")) {
+        suggestion += "\n🎭 Visit Vivekananda Rock Memorial and Gandhi Mandapam.";
+      }
+      if (preferences.includes("nature")) {
+        suggestion += "\n🌿 Enjoy a stroll at Vattakottai Fort and visit Thirparappu Falls.";
+      }
+
+      if (preferences.trim() === "") {
+        suggestion = "❗ Please enter at least one preference to generate an itinerary.";
+      } else {
+        suggestion += "\n\n📞 For more details contact Outbound Travelers at 7904027064.";
+      }
+
+      resultBox.innerText = `📆 Travel Date: ${date}\n🕒 Duration: ${duration}\n\n${suggestion}`;
+      resultBox.style.display = "block";
     }
-    if (preferences.includes("temple")) {
-      suggestion += "\n🛕 Explore Suchindram Temple and Bhagavathy Amman Temple.";
-    }
-    if (preferences.includes("culture") || preferences.includes("heritage")) {
-      suggestion += "\n🎭 Visit Vivekananda Rock Memorial and Gandhi Mandapam.";
-    }
-    if (preferences.includes("nature")) {
-      suggestion += "\n🌿 Enjoy a stroll at Vattakottai Fort and visit Thirparappu Falls.";
-    }
-
-    if (preferences.trim() === "") {
-      suggestion = "❗ Please enter at least one preference to generate an itinerary.";
-    } else {
-      suggestion += "\n\n📞 For more details contact Outbound Travelers at 7904027064.";
-    }
-
-    resultBox.innerText = `📆 Travel Date: ${date}\n🕒 Duration: ${duration}\n\n${suggestion}`;
-    resultBox.style.display = "block";
-  }
-</script>
-
-
+  </script>
 </body>
 </html>
