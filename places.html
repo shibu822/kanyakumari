@@ -55,6 +55,19 @@
       color: #555;
     }
 
+        .notification-bar {
+      background: #ffedd5;
+      color: #b45309;
+      padding: 0.6rem;
+      text-align: center;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    .notification-bar:hover {
+      background: #fed7aa;
+    }
+
     .hero-image {
       width: 100%;
       max-height: 400px;
@@ -71,8 +84,8 @@
     .landmarks {
       display: flex;
       gap: 1.5rem;
-      margin-top: 1;
-      flex-wrap:wrap;
+      flex-wrap: wrap;
+      margin-top: 1rem;
     }
 
     .landmark-card {
@@ -81,6 +94,14 @@
       box-shadow: 0 2px 5px rgba(0,0,0,0.08);
       overflow: hidden;
       width: 300px;
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+      text-align: left;
+    }
+
+    .landmark-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
     }
 
     .landmark-card img {
@@ -131,15 +152,25 @@
       margin-top: 0.4rem;
     }
 
-    .box img.map {
-      width: 100%;
-      border-radius: 8px;
-      margin-top: -10rem;
-    }
-
     .icon {
       font-size: 1.2rem;
       margin-right: 0.5rem;
+    }
+
+    .cta-button {
+      padding: 12px 24px;
+      background-color: #1a4ed8;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: bold;
+      display: inline-block;
+      margin-top: 2rem;
+    }
+
+    iframe {
+      border-radius: 10px;
+      margin-top: 1rem;
     }
 
     footer {
@@ -150,6 +181,16 @@
       font-size: 0.9rem;
     }
 
+    @media (max-width: 768px) {
+      .landmarks {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .highlight-section {
+        flex-direction: column;
+      }
+    }
   </style>
 </head>
 <body>
@@ -158,12 +199,19 @@
     <div class="logo">VisitKanyakumari.in</div>
     <nav>
       <a href="index.html">Home</a>
-      
       <a href="itineraries.html">Itineraries</a>
       <a href="hotels.html">Hotels</a>
       <a href="travel-tips.html">Travel Tips</a>
     </nav>
   </header>
+  <div class="notification-bar" onclick="location.href='https://www.instagram.com/pocketlensproduction/'">
+     📸 Need a videographer/photographer in Kanyakumari? Check out pocket lens prodection – Click here!
+  </div>
+  <div style="background: #fffae6; color: #333; text-align: center; padding: 10px; font-weight: bold; font-size: 14px;">
+  📢 For personalized travel assistance, <a href="tel:7904027064" style="color: #2b57d8; text-decoration: underline;">contact Outbound Travelers</a>.
+</div>
+
+
 
   <main>
     <h1>Top Attractions in Kanyakumari</h1>
@@ -171,66 +219,129 @@
     <img src="assets/kanyakumari-attractions.jpg" alt="Kanyakumari view" class="hero-image">
 
     <h2>Featured Landmarks</h2>
-    <div class="landmarks">
-      <div class="landmark-card">
-        <img src="assets/day1.jpg" alt="Vivekananda Rock Memorial">
-        <div class="info">
-          <h3>Vivekananda Rock Memorial</h3>
-          <p>Island monument dedicated to Swami Vivekananda</p>
-        </div>
-      </div>
-
-      <div class="landmark-card">
-        <img src="assets/Kanyakumari_beach_sunrise.jpg" alt="Kanyakumari Beach">
-        <div class="info">
-          <h3>Kanyakumari Beach</h3>
-          <p>Famous for its sunrise and sunset views</p>
-        </div>
-      </div>
-
-      <div class="landmark-card">
-        <img src="assets/Padmanabhapuram_Palace_front_view.jpg" alt="Padmanabhapuram Palace">
-        <div class="info">
-          <h3>Padmanabhapuram Palace</h3>
-          <p>Historic wooden palace complex</p>
-        </div>
-      </div>
+   <div class="landmarks">
+  <div class="landmark-card">
+    <img src="assets/day1.jpg" alt="Vivekananda Rock Memorial">
+    <div class="info">
+      <h3>Vivekananda Rock Memorial</h3>
+      <p>Island monument dedicated to Swami Vivekananda</p>
     </div>
+  </div>
 
-     <div class="landmark-card">
-        <img src="assets/Mathur Aqueduct.jpg" alt="Mathoor Aqueduct">
-        <div class="info">
-          <h3>Mathoor Aqueduct</h3>
-          <p>Mathoor Aqueduct is a concrete structure supported by 28 huge pillars, the maximum height of the pillars reaching 115 ft.</p>
-        </div>
-      </div>
+  <div class="landmark-card">
+    <img src="assets/Kanyakumari_beach_sunrise.jpg" alt="Kanyakumari Beach">
+    <div class="info">
+      <h3>Kanyakumari Beach</h3>
+      <p>Famous for its sunrise and sunset views</p>
+    </div>
+  </div>
 
-       
-    <div class="highlight-section">
-      <div class="box">
-        <div><span class="icon">📅</span><strong>Best Time to Visit</strong></div>
-        <p>October to March are the ideal months to visit, with pleasant weather perfect for sightseeing</p>
-      </div>
+  <div class="landmark-card">
+    <img src="assets/Padmanabhapuram_Palace_front_view.jpg" alt="Padmanabhapuram Palace">
+    <div class="info">
+      <h3>Padmanabhapuram Palace</h3>
+      <p>Historic wooden palace complex</p>
+    </div>
+  </div>
 
-    
+  <div class="landmark-card">
+    <img src="assets/day2.jpg" alt="Thiruvalluvar Statue">
+    <div class="info">
+      <h3>Thiruvalluvar Statue</h3>
+      <p>133-ft statue of Tamil philosopher</p>
+    </div>
+  </div>
 
-<!-- Photo Gallery Section -->
-<div class="box" onclick="document.getElementById('gallery').style.display='flex'">
-  <div><span class="icon">📷</span><strong>Photo Gallery</strong></div>
-  <p>Browse more photos of Kanyakumari’s beautiful attractions</p>
-  <a href="gallery.html" class="button">📷 Photo Gallery</a>
+  <div class="landmark-card">
+    <img src="assets/gandhi-memorial.jpg" alt="Gandhi Memorial Mandapam">
+    <div class="info">
+      <h3>Gandhi Memorial Mandapam</h3>
+      <p>Memorial where Gandhi's ashes were kept before immersion</p>
+    </div>
+  </div>
+
+  <div class="landmark-card">
+    <img src="assets/kanyakumari-temple.jpg" alt="Kanyakumari Temple">
+    <div class="info">
+      <h3>Kanyakumari Temple</h3>
+      <p>Ancient temple dedicated to Goddess Kanyakumari</p>
+    </div>
+  </div>
 </div>
 
 
+    <h2>Nearby Attractions</h2>
+    <div class="landmarks">
+  <div class="landmark-card">
+    <img src="assets/suchindram-temple.jpg" alt="Suchindram Temple">
+    <div class="info">
+      <h3>Suchindram Temple</h3>
+      <p>Famous for architecture and musical pillars</p>
+    </div>
+  </div>
 
+  <div class="landmark-card">
+    <img src="assets/Mathur Aqueduct.jpg" alt="Mathur Aqueduct">
+    <div class="info">
+      <h3>Mathur Aqueduct</h3>
+      <p>Concrete aqueduct supported by 115-ft pillars</p>
+    </div>
+  </div>
+
+  <div class="landmark-card">
+    <img src="assets/vattakottai-fort.jpg" alt="Vattakottai Fort">
+    <div class="info">
+      <h3>Vattakottai Fort</h3>
+      <p>Coastal fort offering panoramic sea views</p>
+    </div>
+  </div>
+
+  <div class="landmark-card">
+    <img src="assets/udayagiri-fort.jpg" alt="Udayagiri Fort">
+    <div class="info">
+      <h3>Udayagiri Fort</h3>
+      <p>17th-century fort with historic significance and a bio park</p>
+    </div>
+  </div>
+</div>
+
+
+    <div class="highlight-section">
+      <div class="box">
+        <div><span class="icon">📅</span><strong>Best Time to Visit</strong></div>
+        <p>October to March are ideal with pleasant weather for sightseeing.</p>
+      </div>
 
       <div class="box">
-        <img src="assets/Kanyakumari_district_map.svg.png" class="map" alt="Kanyakumari Map">
+        <div><span class="icon">📷</span><strong>Photo Gallery</strong></div>
+        <p>Explore beautiful images of Kanyakumari’s top spots.</p>
+        <a href="gallery.html" class="cta-button">📷 View Gallery</a>
       </div>
     </div>
 
-    <h2 style="margin-top: 3rem;">Traveler Reviews</h2>
-    <!-- Placeholder for reviews section -->
+    <h2>Watch Kanyakumari in Motion</h2>
+ <iframe width="560" height="315" src="https://www.youtube.com/embed/-t2W6H3K1Ws?si=ga9OfUR57Z91_W5y&amp;start=3" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+
+    <h2>Map Location</h2>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3931.781020740715!2d77.54018957503894!3d8.078211291967079!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b0422f11c7164c1%3A0x97c98243f33e4b9b!2sKanyakumari!5e0!3m2!1sen!2sin!4v1719247098361" width="100%" height="300" allowfullscreen="" loading="lazy"></iframe>
+
+    <div style="text-align:center;">
+      <a href="itineraries.html" class="cta-button">🗺️ View Suggested Itineraries</a>
+    </div>
+
+    <h2>From Our Travel Blog</h2>
+    <div class="landmarks">
+      <div class="landmark-card">
+        <img src="assets/blog1.jpg" alt="Sunrise Blog">
+        <div class="info">
+          <h3>Sunrise at Vivekananda Rock</h3>
+          <p>Why early mornings in Kanyakumari are magical...</p>
+        </div>
+      </div>
+    </div>
+
+    <h2>Traveler Reviews</h2>
     <p style="color: #888;">(Coming soon...)</p>
   </main>
 

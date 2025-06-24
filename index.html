@@ -5,6 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Visit Kanyakumari</title>
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       font-family: 'Segoe UI', sans-serif;
       margin: 0;
@@ -16,9 +24,13 @@
     header {
       display: flex;
       justify-content: space-between;
+      align-items: center;
       padding: 1rem 2rem;
       background: #fff;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
 
     .logo {
@@ -37,67 +49,121 @@
       font-weight: bold;
     }
 
-    main {
-      padding: 2rem;
+    .weather-widget {
+      position: absolute;
+      top: 80px;
+      right: 20px;
+      background: #e3f2fd;
+      padding: 0.8rem 1rem;
+      border-radius: 10px;
+      font-size: 0.95rem;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      z-index: 900;
+      text-align: center;
     }
 
-    h1, h2 {
+    .weather-widget img {
+      width: 50px;
+    }
+
+    .notification-bar {
+      background: #ffedd5;
+      color: #b45309;
+      padding: 0.6rem;
       text-align: center;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    .notification-bar:hover {
+      background: #fed7aa;
+    }
+
+    .hero {
+      background: url('assets/kanyakumari-hero.jpg') center/cover no-repeat;
+      color: white;
+      padding: 6rem 2rem;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero-overlay {
+      background: rgba(10, 28, 101, 0.5);
+      display: inline-block;
+      padding: 2rem;
+      border-radius: 12px;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
       margin-bottom: 0.5rem;
     }
 
     .hero p {
-      text-align: center;
+      font-size: 1.2rem;
       max-width: 600px;
-      margin: 0 auto 2rem;
+      margin: 0 auto;
     }
 
-    /* searchbar */
-.search-box {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 20px;
-}
+    .cta-button {
+      display: inline-block;
+      margin-top: 1.5rem;
+      background: #1e40af;
+      color: white;
+      padding: 0.8rem 1.5rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
 
-.search-box input {
-  padding: 12px 16px;
-  font-size: 16px;
-  width: 280px;
-  border: 2px solid #1e3a8a;
-  border-radius: 8px 0 0 8px;
-  outline: none;
-  font-family: inherit;
-}
+    .cta-button:hover {
+      background: #3b82f6;
+    }
 
-.search-btn {
-  padding: 12px 20px;
-  background-color: #1e3a8a;
-  color: white;
-  font-size: 16px;
-  border: 2px solid #1e3a8a;
-  border-left: none;
-  border-radius: 0 8px 8px 0;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  font-family: inherit;
-}
+    .search-box {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 1.5rem 0;
+    }
 
-.search-btn:hover {
-  background-color: #3b5cd3;
-}
+    .search-box input {
+      padding: 12px 16px;
+      font-size: 16px;
+      width: 280px;
+      border: 2px solid #1e3a8a;
+      border-radius: 8px 0 0 8px;
+      outline: none;
+      font-family: inherit;
+    }
 
+    .search-btn {
+      padding: 12px 20px;
+      background-color: #1e3a8a;
+      color: white;
+      font-size: 16px;
+      border: 2px solid #1e3a8a;
+      border-left: none;
+      border-radius: 0 8px 8px 0;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      font-family: inherit;
+    }
 
+    .search-btn:hover {
+      background-color: #3b5cd3;
+    }
 
     .buttons {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 1.2rem;
-      margin: 2rem 0;
+      margin: 2rem;
+      padding: 0 2rem;
     }
 
     .card {
-      display: block;
       text-decoration: none;
       background: linear-gradient(135deg, #3b82f6, #1e40af);
       padding: 1.2rem;
@@ -111,16 +177,6 @@
       transform: translateY(-4px);
     }
 
-    .card h3 {
-      margin: 0;
-      font-size: 1.2rem;
-    }
-
-    .card p {
-      margin-top: 0.5rem;
-      font-size: 0.95rem;
-    }
-
     .image {
       text-align: center;
       margin: 3rem 0;
@@ -132,42 +188,61 @@
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
 
-    .weather-widget, .events-section, .testimonials, .faq {
+    .events-section {
       margin: 3rem auto;
       max-width: 800px;
+      padding: 0 1rem;
       text-align: center;
     }
 
-    .weather-box {
-      display: inline-block;
-      background: #e3f2fd;
-      padding: 1rem 2rem;
-      border-radius: 10px;
-      font-size: 1.1rem;
-      margin-top: 0.5rem;
-    }
-
     .event-list {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
       list-style: none;
       padding: 0;
     }
 
     .event-list li {
-      background: #f1f8e9;
-      padding: 0.8rem;
-      margin: 0.5rem auto;
+      background: #f0f4c3;
+      border-left: 5px solid #cddc39;
+      padding: 1rem;
       border-radius: 8px;
-      max-width: 500px;
+      text-align: left;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+
+    .testimonials {
+      margin: 3rem auto;
+      max-width: 800px;
+      padding: 0 1rem;
+      text-align: center;
+    }
+
+    .testimonial-grid {
+      display: grid;
+      gap: 1.2rem;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     }
 
     .testimonial-box {
-      background: #fff8e1;
-      padding: 1rem 2rem;
-      margin: 1rem auto;
-      border-left: 5px solid #ffb300;
-      max-width: 600px;
+      background: #ffffff;
+      border: 1px solid #e0e0e0;
+      padding: 1.2rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    }
+
+    .testimonial-box p {
       font-style: italic;
-      border-radius: 6px;
+      color: #333;
+    }
+
+    .faq {
+      margin: 3rem auto;
+      max-width: 800px;
+      padding: 0 1rem;
+      text-align: center;
     }
 
     .faq details {
@@ -182,14 +257,57 @@
       font-weight: bold;
       cursor: pointer;
     }
+
     footer {
       margin-top: 3rem;
       padding: 2rem;
       text-align: center;
-      color: #888;
+      background: #f0f0f0;
+      color: #555;
       font-size: 0.9rem;
     }
 
+    footer a {
+      color: #1e40af;
+      margin: 0 8px;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeIn 1s ease-out forwards;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .buttons {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .hero p {
+        font-size: 1rem;
+      }
+
+      .weather-widget {
+        position: static;
+        margin: 1rem auto;
+      }
+    }
   </style>
 </head>
 
@@ -197,38 +315,39 @@
   <header>
     <div class="logo">VisitKanyakumari.in</div>
     <nav>
-      <a href="places.html" >Places to Visit</a>
-      <a href="#">Plan Your Trip</a>
+      <a href="places.html">Places to Visit</a>
+      <a href="itineraries.html">Plan Your Trip</a>
       <a href="hotels.html">Hotels</a>
       <a href="travel-tips.html">Travel Tips</a>
     </nav>
   </header>
 
+  <div class="weather-widget" id="weather">Loading weather...</div>
+
+  <div class="notification-bar" onclick="location.href='https://www.instagram.com/pocketlensproduction/'">
+     📸 Need a videographer/photographer in Kanyakumari? Check out pocket lens prodection – Click here!
+  </div>
+  <div style="background: #fffae6; color: #333; text-align: center; padding: 10px; font-weight: bold; font-size: 14px;">
+  📢 For personalized travel assistance, <a href="tel:7904027064" style="color: #2b57d8; text-decoration: underline;">contact Outbound Travelers</a>.
+</div>
+
+
+
   <main>
     <section class="hero">
-      <h1>Explore Kanyakumari</h1>
-      <p>Discover the southernmost tip of India, known for its stunning sunrises, historic landmarks, and vibrant culture.</p>
+      <div class="hero-overlay fade-in">
+        <h1>Explore Kanyakumari</h1>
+        <p>Discover the southernmost tip of India, known for its stunning sunrises, historic landmarks, and vibrant culture.</p>
+        <a href="itineraries.html" class="cta-button">Plan Your Perfect Trip</a>
+      </div>
     </section>
 
-    
-     <div class="search-box">
-    <input type="text" id="searchInput" placeholder="Search..." />
-    <button class="search-btn" onclick="handleSearch()">Search</button>
-  </div>
+    <div class="search-box fade-in">
+      <input type="text" id="searchInput" placeholder="Search..." />
+      <button class="search-btn" onclick="handleSearch()">Search</button>
+    </div>
 
-<script>
-  function handleSearch() {
-    const query = document.getElementById("searchInput").value.trim();
-    if (query !== "") {
-      const googleSearchURL = `https://www.google.com/search?q=${encodeURIComponent(query + " in Kanyakumari")}`;
-      window.open(googleSearchURL, "_blank");
-    } else {
-      alert("Please enter a search term.");
-    }
-  }
-  </script>
-
-    <section class="buttons">
+    <section class="buttons fade-in">
       <a href="places.html" class="card">
         <h3>📍 Famous Places</h3>
         <p>Top attractions and must-see locations in Kanyakumari</p>
@@ -247,63 +366,36 @@
       </a>
     </section>
 
-    <section class="image">
+    <section class="image fade-in">
       <h2>Explore Attractions</h2>
       <img src="assets/kanyakumari.jpg" alt="Kanyakumari view" />
     </section>
 
-  <section class="weather-widget">
-  <h2>🌤️ Current Weather</h2>
-  <div class="weather-box" id="weather">
-    Loading weather...
-  </div>
-</section>
-<script>
-  const apiKey = '6d200cba495975e701c8790be5426431'; // Replace with your actual API key
-  const city = 'Kanyakumari';
-
-  async function getWeather() {
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
-    try {
-      const response = await fetch(url);
-      const data = await response.json();
-      const temp = Math.round(data.main.temp);
-      const condition = data.weather[0].description;
-      const icon = data.weather[0].icon;
-
-      document.getElementById("weather").innerHTML = `
-        <p><strong>${city}</strong></p>
-        <p>${temp}°C | ${condition}</p>
-        <img src="https://openweathermap.org/img/wn/${icon}@2x.png" alt="${condition}" />
-      `;
-    } catch (error) {
-      document.getElementById("weather").innerText = "Weather data not available.";
-    }
-  }
-
-  getWeather();
-</script>
-
-    <section class="events-section">
+    <section class="events-section fade-in">
       <h2>📅 Upcoming Events</h2>
       <ul class="event-list">
-        <li><strong>June 30:</strong> Cultural Fest at Beach Park</li>
-        <li><strong>July 15:</strong> Sunset Photography Walk</li>
-        <li><strong>August 5:</strong> Temple Art Expo</li>
+        <li><strong>April or May:</strong>  Chitra Pournami Festival </li>
+        <li><strong>mid-January and mid-February:</strong>  Kavadi Kettu refers to the act of carrying elaborately decorated structures </li>
+        <li><strong>Dec 23–25:</strong> Christmas Celebrations at town center and churches</li>
       </ul>
     </section>
 
-    <section class="testimonials">
+    <section class="testimonials fade-in">
       <h2>🌟 Traveler Reviews</h2>
-      <div class="testimonial-box">
-        <p>"Absolutely stunning place! The sunrise is unforgettable." – Arjun S.</p>
-      </div>
-      <div class="testimonial-box">
-        <p>"Clean beaches and very peaceful temples." – Neha M.</p>
+      <div class="testimonial-grid">
+        <div class="testimonial-box">
+          <p>"Absolutely stunning place! The sunrise is unforgettable." <br>– Arjun S.</p>
+        </div>
+        <div class="testimonial-box">
+          <p>"Clean beaches and very peaceful temples. Great for family." <br>– Neha M.</p>
+        </div>
+        <div class="testimonial-box">
+          <p>"A spiritual and scenic paradise. Don't miss the Vivekananda Rock!" <br>– Kavitha R.</p>
+        </div>
       </div>
     </section>
 
-    <section class="faq">
+    <section class="faq fade-in">
       <h2>❓ Frequently Asked Questions</h2>
       <details>
         <summary>What is the best time to visit?</summary>
@@ -315,9 +407,50 @@
       </details>
     </section>
   </main>
+
   <footer>
     <p>&copy; 2023 VisitKanyakumari.in | All rights reserved.</p>
+    <div>
+      <a href="https://www.instagram.com/shibu_822/">Instagram</a> | 
+      <a href="#">Facebook</a> | 
+      <a href="tel:8220215258">Contact</a>
+    </div>
   </footer>
-</body>
+
+  <script>
+    function handleSearch() {
+      const query = document.getElementById("searchInput").value.trim();
+      if (query !== "") {
+        const googleSearchURL = `https://www.google.com/search?q=${encodeURIComponent(query + " in Kanyakumari")}`;
+        window.open(googleSearchURL, "_blank");
+      } else {
+        alert("Please enter a search term.");
+      }
+    }
+
+    const apiKey = '6d200cba495975e701c8790be5426431';
+    const city = 'Kanyakumari';
+
+    async function getWeather() {
+      const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
+      try {
+        const response = await fetch(url);
+        const data = await response.json();
+        const temp = Math.round(data.main.temp);
+        const condition = data.weather[0].description;
+        const icon = data.weather[0].icon;
+
+        document.getElementById("weather").innerHTML = `
+          <p><strong>${city}</strong></p>
+          <p>${temp}°C | ${condition}</p>
+          <img src="https://openweathermap.org/img/wn/${icon}@2x.png" alt="${condition}" />
+        `;
+      } catch (error) {
+        document.getElementById("weather").innerText = "Weather data not available.";
+      }
+    }
+
+    getWeather();
+  </script>
 </body>
 </html>
