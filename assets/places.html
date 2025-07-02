@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Top Attractions in Kanyakumari</title>
+  <style>
+  body {
+    font-family: "Segoe UI", sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #222;
+  }
+
+  header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem;
+    background-color: white;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .logo {
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+  }
+
+  nav a {
+    text-decoration: none;
+    color: #444;
+    font-size: 0.95rem;
+  }
+
+  nav a:first-child {
+    color: #1a4ed8;
+    font-weight: 600;
+  }
+
+  main {
+    padding: 1.2rem;
+    max-width: 1200px;
+    margin: auto;
+  }
+
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  p.subtitle {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    color: #555;
+  }
+
+  .notification-bar {
+    background: #ffedd5;
+    color: #b45309;
+    padding: 0.6rem;
+    text-align: center;
+    font-weight: 500;
+    cursor: pointer;
+    font-size: 0.95rem;
+  }
+
+  .notification-bar:hover {
+    background: #fed7aa;
+  }
+
+  .hero-image {
+    width: 100%;
+    height: auto;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+  }
+
+  h2 {
+    margin-top: 2rem;
+    font-size: 1.5rem;
+  }
+
+  .landmarks {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+
+  .landmark-card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    width: 100%;
+    max-width: 300px;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    text-align: left;
+    flex: 1 1 calc(50% - 1rem);
+  }
+
+  .landmark-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  .landmark-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+  }
+
+  .landmark-card .info {
+    padding: 1rem;
+  }
+
+  .landmark-card h3 {
+    margin: 0 0 0.5rem;
+    font-size: 1.1rem;
+  }
+
+  .info p {
+    color: #555;
+    font-size: 0.95rem;
+    line-height: 1.4;
+  }
+
+  .highlight-section {
+    margin-top: 2.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+  }
+
+  .highlight-section .box {
+    background-color: white;
+    padding: 1.2rem 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    flex: 1 1 300px;
+    box-sizing: border-box;
+  }
+
+  .box h3 {
+    font-size: 1.2rem;
+    margin-top: 0;
+  }
+
+  .box p {
+    color: #555;
+    font-size: 0.95rem;
+    margin-top: 0.4rem;
+  }
+
+  .icon {
+    font-size: 1.2rem;
+    margin-right: 0.5rem;
+  }
+
+  .cta-button {
+    padding: 10px 20px;
+    background-color: #1a4ed8;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+    display: inline-block;
+    margin-top: 1rem;
+    font-size: 0.95rem;
+  }
+
+  iframe {
+    border-radius: 10px;
+    margin-top: 1rem;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+  }
+
+  footer {
+    margin-top: 3rem;
+    padding: 2rem;
+    text-align: center;
+    color: #888;
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 480px) {
+    header {
+      align-items: center;
+      text-align: center;
+    }
+
+    .landmark-card {
+      flex: 1 1 100%;
+    }
+
+    h1 {
+      font-size: 1.5rem;
+    }
+
+    h2 {
+      font-size: 1.3rem;
+    }
+
+    .cta-button {
+      width: 100%;
+      text-align: center;
+    }
+
+    .notification-bar {
+      font-size: 0.9rem;
+      padding: 0.5rem;
+    }
+
+    .box h3 {
+      font-size: 1rem;
+    }
+
+    nav {
+      justify-content: center;
+    }
+
+    nav a {
+      font-size: 0.9rem;
+    }
+  }
+</style>
+
+</head>
+<body>
+
+  <header>
+    <div class="logo">VisitKanyakumari.in</div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="itineraries.html">Itineraries</a>
+      <a href="hotels.html">Hotels</a>
+      <a href="travel-tips.html">Travel Tips</a>
+    </nav>
+  </header>
+  <div class="notification-bar" onclick="location.href='https://www.instagram.com/pocketlensproduction/'">
+     📸 Need a videographer/photographer in Kanyakumari? Check out pocket lens prodection – Click here!
+  </div>
+  <div style="background: #fffae6; color: #333; text-align: center; padding: 10px; font-weight: bold; font-size: 14px;">
+  📢 For personalized travel assistance, <a href="tel:7904027064" style="color: #2b57d8; text-decoration: underline;">contact Outbound Travelers</a>.
+</div>
+
+
+
+  <main>
+    <h1>Top Attractions in Kanyakumari</h1>
+    <p class="subtitle">Discover the must-see landmarks and attractions in Kanyakumari, the southernmost tip of India.</p>
+    <img src="assets/kanyakumari-attractions.jpg" alt="Kanyakumari view" class="hero-image">
+
+    <h2>Featured Landmarks</h2>
+   <div class="landmarks">
+  <div class="landmark-card">
+    <img src="assets/day1.jpg" alt="Vivekananda Rock Memorial">
+    <div class="info">
+      <h3>Vivekananda Rock Memorial</h3>
+      <p>Island monument dedicated to Swami Vivekananda</p>
+    </div>
+  </div>
+
+  <div class="landmark-card">
+    <img src="assets/Kanyakumari_beach_sunrise.jpg" alt="Kanyakumari Beach">
+    <div class="info">
+      <h3>Kanyakumari Beach</h3>
+      <p>Famous for its sunrise and sunset views</p>
+    </div>
+  </div>
+
+  <div class="landmark-card">
+    <img src="assets/Padmanabhapuram_Palace_front_view.jpg" alt="Padmanabhapuram Palace">
+    <div class="info">
+      <h3>Padmanabhapuram Palace</h3>
+      <p>Historic wooden palace complex</p>
+    </div>
+  </div>
+
+  <div class="landmark-card">
+    <img src="assets/day2.jpg" alt="Thiruvalluvar Statue">
+    <div class="info">
+      <h3>Thiruvalluvar Statue</h3>
+      <p>133-ft statue of Tamil philosopher</p>
+    </div>
+  </div>
+
+  <div class="landmark-card">
+    <img src="assets/gandhi-memorial.jpg" alt="Gandhi Memorial Mandapam">
+    <div class="info">
+      <h3>Gandhi Memorial Mandapam</h3>
+      <p>Memorial where Gandhi's ashes were kept before immersion</p>
+    </div>
+  </div>
+
+  <div class="landmark-card">
+    <img src="assets/kanyakumari-temple.jpg" alt="Kanyakumari Temple">
+    <div class="info">
+      <h3>Kanyakumari Temple</h3>
+      <p>Ancient temple dedicated to Goddess Kanyakumari</p>
+    </div>
+  </div>
+</div>
+
+
+    <h2>Nearby Attractions</h2>
+    <div class="landmarks">
+  <div class="landmark-card">
+    <img src="assets/suchindram-temple.jpg" alt="Suchindram Temple">
+    <div class="info">
+      <h3>Suchindram Temple</h3>
+      <p>Famous for architecture and musical pillars</p>
+    </div>
+  </div>
+
+  <div class="landmark-card">
+    <img src="assets/Mathur Aqueduct.jpg" alt="Mathur Aqueduct">
+    <div class="info">
+      <h3>Mathur Aqueduct</h3>
+      <p>Concrete aqueduct supported by 115-ft pillars</p>
+    </div>
+  </div>
+
+  <div class="landmark-card">
+    <img src="assets/vattakottai-fort.jpg" alt="Vattakottai Fort">
+    <div class="info">
+      <h3>Vattakottai Fort</h3>
+      <p>Coastal fort offering panoramic sea views</p>
+    </div>
+  </div>
+
+  <div class="landmark-card">
+    <img src="assets/udayagiri-fort.jpg" alt="Udayagiri Fort">
+    <div class="info">
+      <h3>Udayagiri Fort</h3>
+      <p>17th-century fort with historic significance and a bio park</p>
+    </div>
+  </div>
+</div>
+
+
+    <div class="highlight-section">
+      <div class="box">
+        <div><span class="icon">📅</span><strong>Best Time to Visit</strong></div>
+        <p>October to March are ideal with pleasant weather for sightseeing.</p>
+      </div>
+
+      <div class="box">
+        <div><span class="icon">📷</span><strong>Photo Gallery</strong></div>
+        <p>Explore beautiful images of Kanyakumari’s top spots.</p>
+        <a href="gallery.html" class="cta-button">📷 View Gallery</a>
+      </div>
+    </div>
+
+    <h2>Watch Kanyakumari in Motion</h2>
+ <iframe width="560" height="315" src="https://www.youtube.com/embed/-t2W6H3K1Ws?si=ga9OfUR57Z91_W5y&amp;start=3" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+
+    <h2>Map Location</h2>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3931.781020740715!2d77.54018957503894!3d8.078211291967079!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b0422f11c7164c1%3A0x97c98243f33e4b9b!2sKanyakumari!5e0!3m2!1sen!2sin!4v1719247098361" width="100%" height="300" allowfullscreen="" loading="lazy"></iframe>
+
+    <div style="text-align:center;">
+      <a href="itineraries.html" class="cta-button">🗺️ View Suggested Itineraries</a>
+    </div>
+
+    <h2>From Our Travel Blog</h2>
+    <div class="landmarks">
+      <div class="landmark-card">
+        <img src="assets/blog1.jpg" alt="Sunrise Blog">
+        <div class="info">
+          <h3>Sunrise at Vivekananda Rock</h3>
+          <p>Why early mornings in Kanyakumari are magical...</p>
+        </div>
+      </div>
+    </div>
+
+    <h2>Traveler Reviews</h2>
+    <p style="color: #888;">(Coming soon...)</p>
+  </main>
+
+  <footer>
+    &copy; 2025 VisitKanyakumari.in – All rights reserved
+  </footer>
+
+</body>
+</html>

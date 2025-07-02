@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Explore Kanyakumari Itineraries</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #fff;
+      color: #333;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      background: white;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      flex-wrap: wrap;
+    }
+    header h1 {
+      font-size: 22px;
+      margin: 0;
+    }
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    nav a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      font-size: 14px;
+    }
+    nav a.active {
+      color: #2b57d8;
+    }
+
+    .container {
+      padding: 40px;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .title {
+      font-size: 36px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      font-size: 18px;
+      margin-bottom: 30px;
+      color: #555;
+    }
+
+    .notification-bar {
+      background: #ffedd5;
+      color: #b45309;
+      padding: 0.6rem;
+      text-align: center;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    .notification-bar:hover {
+      background: #fed7aa;
+    }
+
+    .banner img {
+      width: 100%;
+      border-radius: 12px;
+      margin-bottom: 40px;
+    }
+
+    .popular-section h2 {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    .itinerary-cards {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .card {
+      flex: 1;
+      min-width: 280px;
+      background: #f9f9f9;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+      background-color: #eaf0ff;
+    }
+
+    .card img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 15px;
+    }
+
+    .card-content h3 {
+      margin: 0 0 10px;
+      font-size: 18px;
+    }
+
+    .card-content p {
+      margin: 0;
+      font-size: 14px;
+      color: #555;
+    }
+
+    .bottom-section {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+    }
+
+    .travel-form, .travel-tips {
+      flex: 1;
+    }
+
+    .travel-form h3 {
+      margin-bottom: 10px;
+    }
+
+    .travel-form input {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    .travel-form button {
+      padding: 12px 24px;
+      background: #2b57d8;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      width: 100%;
+    }
+
+    .result-box {
+      margin-top: 20px;
+      padding: 15px;
+      background: #f2f7ff;
+      border-left: 4px solid #2b57d8;
+      border-radius: 6px;
+      display: none;
+    }
+
+    .travel-tips h4 {
+      margin-bottom: 10px;
+    }
+
+    .travel-tips p {
+      font-size: 14px;
+      color: #555;
+    }
+
+    footer {
+      margin-top: 3rem;
+      padding: 2rem;
+      text-align: center;
+      color: #888;
+      font-size: 0.9rem;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 15px 20px;
+      }
+
+      header h1 {
+        font-size: 20px;
+        margin-bottom: 10px;
+      }
+
+      .container {
+        padding: 20px;
+      }
+
+      .title {
+        font-size: 28px;
+      }
+
+      .subtitle {
+        font-size: 16px;
+        margin-bottom: 20px;
+      }
+
+      .popular-section h2 {
+        font-size: 20px;
+      }
+
+      .card-content h3 {
+        font-size: 16px;
+      }
+
+      .card-content p {
+        font-size: 13px;
+      }
+
+      .bottom-section {
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .travel-form input,
+      .travel-form button {
+        font-size: 14px;
+      }
+
+      .notification-bar,
+      .notification-bar:hover {
+        font-size: 13px;
+        padding: 0.5rem;
+      }
+
+      footer {
+        font-size: 0.8rem;
+        padding: 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .title {
+        font-size: 24px;
+      }
+
+      .subtitle {
+        font-size: 15px;
+      }
+
+      .card img {
+        height: 140px;
+      }
+
+      .travel-form input {
+        padding: 8px;
+      }
+
+      .travel-form button {
+        padding: 10px;
+      }
+
+      .result-box {
+        font-size: 13px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>VisitKanyakumari.in</h1>
+    <nav>
+      <a href="index.html" class="active">Home</a>
+      <a href="places.html">Famous Places</a>
+      <a href="hotels.html">Hotels</a>
+      <a href="travel-tips.html">Travel Tips</a>
+    </nav>
+  </header>
+
+  <div class="notification-bar" onclick="location.href='https://www.instagram.com/pocketlensproduction/'">
+    📸 Need a videographer/photographer in Kanyakumari? Check out pocket lens prodection – Click here!
+  </div>
+
+  <div style="background: #fffae6; color: #333; text-align: center; padding: 10px; font-weight: bold; font-size: 14px;">
+    📢 For personalized travel assistance, 
+    <a href="tel:7904027064" style="color: #2b57d8; text-decoration: underline;">contact Outbound Travelers</a>.
+  </div>
+
+  <div class="container">
+    <div class="title">Explore Kanyakumari Itineraries</div>
+    <div class="subtitle">
+      Find the perfect itinerary for your visit to Kanyakumari, with options ranging from a day to a week.
+    </div>
+
+    <div class="banner">
+      <img src="assets/banner.jpg" alt="Beach banner" />
+    </div>
+
+    <div class="popular-section">
+      <h2>Popular Itineraries</h2>
+      <div class="itinerary-cards">
+        <a href="day1.html" class="card">
+          <img src="assets/day1.jpg" alt="1-Day Trip">
+          <div class="card-content">
+            <h3>1-Day Trip</h3>
+            <p>Highlights of Kanyakumari in a single day</p>
+          </div>
+        </a>
+        <a href="day2.html" class="card">
+          <img src="assets/day2.jpg" alt="2-Day Itinerary">
+          <div class="card-content">
+            <h3>2-Day's Itinerary</h3>
+            <p>A two-day plan covering main attractions</p>
+          </div>
+        </a>
+        <a href="week.html" class="card">
+          <img src="assets/week.jpg" alt="1-Week Itinerary">
+          <div class="card-content">
+            <h3>1-Week Itinerary</h3>
+            <p>In-depth exploration of Kanyakumari and surroundings</p>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="bottom-section">
+      <div class="travel-form">
+        <h3>Plan Your Travel</h3>
+        <input type="date" id="travelDate" placeholder="Travel Date" />
+        <input type="text" id="travelDuration" placeholder="Travel Duration (e.g., 2 days)" />
+        <input type="text" id="preferences" placeholder="Preferences (e.g., beach, temple, culture)" />
+        <button onclick="generateItinerary()">Search</button>
+
+        <div class="result-box" id="itineraryResult"></div>
+      </div>
+
+      <div class="travel-tips">
+        <h4>🌤️ Travel Tips</h4>
+        <p>Get practical advice and tips for your trip to Kanyakumari.</p>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2023 VisitKanyakumari.in | All rights reserved.</p>
+  </footer>
+
+  <script>
+    function generateItinerary() {
+      const date = document.getElementById("travelDate").value;
+      const duration = document.getElementById("travelDuration").value;
+      const preferences = document.getElementById("preferences").value.toLowerCase();
+      const resultBox = document.getElementById("itineraryResult");
+
+      let suggestion = "Here's a custom itinerary based on your preferences:";
+
+      if (preferences.includes("beach")) {
+        suggestion += "\n🌅 Start with sunrise at Kanyakumari Beach and visit Triveni Sangam.";
+      }
+      if (preferences.includes("temple")) {
+        suggestion += "\n🛕 Explore Suchindram Temple and Bhagavathy Amman Temple.";
+      }
+      if (preferences.includes("culture") || preferences.includes("heritage")) {
+        suggestion += "\n🎭 Visit Vivekananda Rock Memorial and Gandhi Mandapam.";
+      }
+      if (preferences.includes("nature")) {
+        suggestion += "\n🌿 Enjoy a stroll at Vattakottai Fort and visit Thirparappu Falls.";
+      }
+
+      if (preferences.trim() === "") {
+        suggestion = "❗ Please enter at least one preference to generate an itinerary.";
+      } else {
+        suggestion += "\n\n📞 For more details contact Outbound Travelers at 7904027064.";
+      }
+
+      resultBox.innerText = `📆 Travel Date: ${date}\n🕒 Duration: ${duration}\n\n${suggestion}`;
+      resultBox.style.display = "block";
+    }
+  </script>
+</body>
+</html>
