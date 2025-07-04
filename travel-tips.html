@@ -122,6 +122,80 @@
   }
 
   header {
+    flex-direction: column;
+    align-items: flex-end;
+    padding: 10px 20px;
+  }
+
+  .logo {
+    align-self: flex-start;
+    font-size: 1rem;
+    margin-bottom: 10px;
+  }
+
+  .nav-links {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    width: 100%;
+    gap: 10px;
+  }
+
+  .nav-links a {
+    font-size: 14px;
+    padding: 6px 0;
+    text-align: right;
+    width: 100%;
+  }
+
+  .hero {
+    padding: 30px 15px 15px;
+  }
+
+  .hero h1 {
+    font-size: 1.4rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  .container {
+    padding: 0 15px;
+    margin: 30px auto;
+  }
+
+  h2 {
+    font-size: 1.1rem;
+    margin-top: 25px;
+  }
+
+  ul {
+    padding-left: 16px;
+  }
+
+  li, p {
+    font-size: 14px;
+  }
+
+  .back-button {
+    font-size: 0.9rem;
+    padding: 10px 16px;
+    margin-top: 20px;
+  }
+
+  footer {
+    font-size: 0.8rem;
+    padding: 15px 10px;
+  }
+}
+@media (max-width: 600px) {
+  body {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  header {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
