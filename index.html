@@ -33,6 +33,31 @@
       top: 0;
       z-index: 1000;
     }
+    .desktop-notice {
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      .desktop-notice {
+        display: block;
+        background-color: #ffeb3b;
+        color: #333;
+        padding: 10px;
+        text-align: center;
+        font-weight: bold;
+        font-family: Arial, sans-serif;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 9999;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      }
+
+      body {
+        margin-top: 50px; /* Push content below the banner */
+      }
+    }
 
     .logo {
       font-weight: 600;
@@ -316,8 +341,7 @@
       transform: translateY(20px);
       animation: fadeIn 1s ease-out forwards;
     }
-
-    @keyframes fadeIn {
+      @keyframes fadeIn {
       to {
         opacity: 1;
         transform: translateY(0);
@@ -371,6 +395,10 @@
   </style>
 </head>
 <body>
+  <div class="desktop-notice">
+  📱 For the best experience, switch to <strong>Desktop Mode</strong> in your browser.
+</div>
+
 
   <header>
     <div class="logo">VisitKanyakumari.in</div>
@@ -391,9 +419,9 @@
     </div>
   </header>
 
-  <div class="weather-container">
+ <!-- <div class="weather-container">
     <div class="weather-widget" id="weather">Loading weather...</div>
-  </div>
+  </div>-->
 
   <div class="notification-bar" onclick="location.href='https://www.instagram.com/pocketlensproduction/'">
     📸 Need a videographer/photographer in Kanyakumari? Check out Pocket Lens Production – Click here!
