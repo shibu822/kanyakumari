@@ -122,21 +122,21 @@
   }
 
   header {
-    flex-direction: column;
-    align-items: flex-start;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
     padding: 10px 20px;
   }
 
   .logo {
     font-size: 1rem;
-    margin-bottom: 10px;
+    flex: 1;
   }
 
   .nav-links {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: flex-end; /* aligns links to the right */
     gap: 10px;
-    margin-top: 10px;
   }
 
   .nav-links a {
@@ -170,12 +170,7 @@
     padding-left: 16px;
   }
 
-  li {
-    font-size: 14px;
-    margin-bottom: 6px;
-  }
-
-  p {
+  li, p {
     font-size: 14px;
   }
 
@@ -190,6 +185,7 @@
     padding: 15px 10px;
   }
 }
+
 
   </style>
 </head>
