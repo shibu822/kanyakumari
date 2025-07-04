@@ -15,16 +15,15 @@
 
   header {
     display: flex;
-    flex-direction: column;
     align-items: flex-start;
     padding: 1rem;
     background-color: white;
     border-bottom: 1px solid #ddd;
   }
 
-  .logo {
+  .logo h1{
     font-weight: bold;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     margin-bottom: 0.5rem;
   }
 
@@ -38,11 +37,6 @@
     text-decoration: none;
     color: #444;
     font-size: 0.95rem;
-  }
-
-  nav a:first-child {
-    color: #1a4ed8;
-    font-weight: 600;
   }
 
   main {
@@ -204,6 +198,10 @@
       text-align: center;
     }
 
+    .logo h1 {
+  font-size: 0.9rem;
+}
+
     .landmark-card {
       flex: 1 1 100%;
     }
@@ -244,9 +242,11 @@
 <body>
 
   <header>
-    <div class="logo">VisitKanyakumari.in</div>
+  <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+    <div class="logo">
+      <h1><a href="index.html" style="text-decoration: none; color: inherit;">VisitKanyakumari.in</a></h1>
+    </div>
     <nav>
-      <a href="index.html">Home</a>
       <a href="itineraries.html">Itineraries</a>
       <a href="hotels.html">Hotels</a>
       <a href="travel-tips.html">Travel Tips</a>
