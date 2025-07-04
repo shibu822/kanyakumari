@@ -5,34 +5,43 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Travel Tips – Visit Kanyakumari</title>
   <style>
-    /* General Styling */
+    /* Base Styles */
     body {
       font-family: 'Segoe UI', sans-serif;
       margin: 0;
       padding: 0;
       background-color: #f7f9fb;
       color: #333;
-      
+      font-size: 15px;
+      line-height: 1.6;
     }
 
-    /* Header Styling */
+    a {
+      color: #0071ad;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* Header */
     header {
-      background-color: #ffffff;
-      color: white;
+      background-color: #fff;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 10px 30px;
+      padding: 15px 25px;
+      border-bottom: 1px solid #eee;
       flex-wrap: wrap;
     }
 
-.logo {
-  font-size: 1.2em;
-  font-weight: bold;
-  margin-right: auto;
-  color: rgb(0, 0, 0);
-  text-decoration: none;
-}
+    .logo {
+      font-size: 1.4rem;
+      font-weight: bold;
+      color: #000;
+      text-decoration: none;
+    }
 
     .nav-links {
       display: flex;
@@ -40,19 +49,15 @@
     }
 
     .nav-links a {
-      color: rgb(0, 0, 0);
-      text-decoration: none;
       font-weight: 500;
-      padding: 8px;
+      padding: 8px 0;
+      color: #000;
     }
 
-    .nav-links a:hover {
-      text-decoration: underline;
-    }
-
+    /* Hero Section */
     .hero {
       text-align: center;
-      padding: 50px 20px 20px;
+      padding: 50px 20px 30px;
       background: linear-gradient(to right, #caf0f8, #ade8f4);
     }
 
@@ -67,6 +72,7 @@
       color: #555;
     }
 
+    /* Container */
     .container {
       max-width: 900px;
       margin: 40px auto;
@@ -76,15 +82,25 @@
     h2 {
       color: #0077b6;
       margin-top: 30px;
+      font-size: 1.4em;
     }
 
     ul {
       padding-left: 20px;
+      margin-top: 10px;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    p {
+      margin-top: 10px;
     }
 
     .back-button {
       display: inline-block;
-      margin: 30px 0;
+      margin: 40px 0;
       padding: 12px 20px;
       background-color: #023e8a;
       color: #fff;
@@ -98,10 +114,7 @@
       background-color: #0077b6;
     }
 
-    a {
-      color: #0071ad;
-    }
-
+    /* Footer */
     footer {
       text-align: center;
       padding: 20px;
@@ -109,171 +122,81 @@
       color: #fff;
       font-size: 0.9em;
     }
-    body {
-  font-size: 15px;
-}
 
+    /* Mobile Styles */
+    @media (max-width: 600px) {
+      body {
+        font-size: 14px;
+      }
 
-    /* Responsive */
-@media (max-width: 600px) {
-  body {
-    font-size: 14px;
-    line-height: 1.6;
-  }
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 15px 20px;
+      }
 
-  header {
-    flex-direction: column;
-    align-items: flex-end;
-    padding: 10px 20px;
-  }
+      .logo {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+      }
 
-  .logo {
-    align-self: flex-start;
-    font-size: 1rem;
-    margin-bottom: 10px;
-  }
+      .nav-links {
+        flex-direction: column;
+        align-items: flex-end;
+        width: 100%;
+        gap: 10px;
+      }
 
-  .nav-links {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    width: 100%;
-    gap: 10px;
-  }
+      .nav-links a {
+        font-size: 14px;
+        text-align: right;
+        width: 100%;
+      }
 
-  .nav-links a {
-    font-size: 14px;
-    padding: 6px 0;
-    text-align: right;
-    width: 100%;
-  }
+      .hero {
+        padding: 35px 15px 20px;
+      }
 
-  .hero {
-    padding: 30px 15px 15px;
-  }
+      .hero h1 {
+        font-size: 1.5rem;
+      }
 
-  .hero h1 {
-    font-size: 1.4rem;
-  }
+      .hero p {
+        font-size: 1rem;
+      }
 
-  .hero p {
-    font-size: 1rem;
-  }
+      .container {
+        padding: 0 15px;
+        margin: 30px auto;
+      }
 
-  .container {
-    padding: 0 15px;
-    margin: 30px auto;
-  }
+      h2 {
+        font-size: 1.2rem;
+      }
 
-  h2 {
-    font-size: 1.1rem;
-    margin-top: 25px;
-  }
+      .back-button {
+        font-size: 0.9rem;
+        padding: 10px 16px;
+      }
 
-  ul {
-    padding-left: 16px;
-  }
-
-  li, p {
-    font-size: 14px;
-  }
-
-  .back-button {
-    font-size: 0.9rem;
-    padding: 10px 16px;
-    margin-top: 20px;
-  }
-
-  footer {
-    font-size: 0.8rem;
-    padding: 15px 10px;
-  }
-}
-@media (max-width: 600px) {
-  body {
-    font-size: 14px;
-    line-height: 1.6;
-  }
-
-  header {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-  }
-
-  .logo {
-    font-size: 1rem;
-    flex: 1;
-  }
-
-  .nav-links {
-    flex-direction: column;
-    align-items: flex-end; /* aligns links to the right */
-    gap: 10px;
-  }
-
-  .nav-links a {
-    font-size: 14px;
-    padding: 6px 0;
-  }
-
-  .hero {
-    padding: 30px 15px 15px;
-  }
-
-  .hero h1 {
-    font-size: 1.4rem;
-  }
-
-  .hero p {
-    font-size: 1rem;
-  }
-
-  .container {
-    padding: 0 15px;
-    margin: 30px auto;
-  }
-
-  h2 {
-    font-size: 1.1rem;
-    margin-top: 25px;
-  }
-
-  ul {
-    padding-left: 16px;
-  }
-
-  li, p {
-    font-size: 14px;
-  }
-
-  .back-button {
-    font-size: 0.9rem;
-    padding: 10px 16px;
-    margin-top: 20px;
-  }
-
-  footer {
-    font-size: 0.8rem;
-    padding: 15px 10px;
-  }
-}
-
-
+      footer {
+        font-size: 0.8rem;
+        padding: 15px 10px;
+      }
+    }
   </style>
 </head>
 <body>
 
-  <!-- Header and Navigation -->
-<header>
-  <a href="index.html" class="logo">VisitKanyakumari.in</a>
-  <nav class="nav-links">
-    <a href="places.html">Places to Visit</a>
-    <a href="itineraries.html">Itineraries</a>
-    <a href="hotels.html">Hotels</a>
-  </nav>
-</header>
+  <!-- Header -->
+  <header>
+    <a href="index.html" class="logo">VisitKanyakumari.in</a>
+    <nav class="nav-links">
+      <a href="places.html">Places to Visit</a>
+      <a href="itineraries.html">Itineraries</a>
+      <a href="hotels.html">Hotels</a>
+    </nav>
+  </header>
 
   <!-- Hero Section -->
   <section class="hero">
@@ -281,7 +204,7 @@
     <p>Be prepared and make the most of your trip with these local travel insights.</p>
   </section>
 
-  <!-- Tips Content -->
+  <!-- Content -->
   <div class="container">
     <h2>🧳 Essentials to Carry</h2>
     <ul>
@@ -331,7 +254,6 @@
       <li><a href="https://www.irctc.co.in/" target="_blank">Train Bookings – IRCTC</a></li>
     </ul>
 
-    <!-- Back Button -->
     <a href="index.html" class="back-button">← Back to Home</a>
   </div>
 
