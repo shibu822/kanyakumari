@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Visit Kanyakumari</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@500;700&family=Roboto+Mono&display=swap" rel="stylesheet">
   <style>
     * {
       box-sizing: border-box;
@@ -14,11 +15,19 @@
     }
 
     body {
-      font-family: 'Segoe UI', sans-serif;
+      font-family: 'Inter', sans-serif;
       margin: 0;
       padding: 0;
       background: #fafafa;
       color: #222;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Playfair Display', serif;
+    }
+
+    code, pre, .faq summary {
+      font-family: 'Roboto Mono', monospace;
     }
 
     header {
@@ -54,7 +63,6 @@
       font-weight: bold;
     }
 
-    /* Mobile menu */
     .menu-toggle {
       display: none;
       flex-direction: column;
@@ -90,7 +98,7 @@
       position: absolute;
       top: 80px;
       right: 20px;
-      background: #e3f2fd;
+      background: #d8ebf0;
       padding: 0.8rem 1rem;
       border-radius: 10px;
       font-size: 0.95rem;
@@ -151,7 +159,27 @@
       border-radius: 8px;
       text-decoration: none;
       font-weight: bold;
+      position: relative;
+      overflow: hidden;
       transition: background 0.3s;
+    }
+
+    .cta-button::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+      transform: scale(0);
+      opacity: 0;
+      transition: transform 0.6s ease, opacity 0.6s ease;
+    }
+
+    .cta-button:hover::after {
+      transform: scale(1);
+      opacity: 1;
     }
 
     .cta-button:hover {
@@ -170,7 +198,7 @@
       padding: 12px 16px;
       font-size: 16px;
       width: 280px;
-      border: 2px solid #1e3a8a;
+      border: 2px solid s#1a1179;
       border-radius: 8px 0 0 8px;
       outline: none;
       font-family: inherit;
@@ -178,19 +206,21 @@
 
     .search-btn {
       padding: 12px 20px;
-      background-color: #1e3a8a;
-      color: white;
+      background-color: #10328f;
+      color: rgb(255, 255, 255);
       font-size: 16px;
       border: 2px solid #1e3a8a;
       border-left: none;
       border-radius: 0 8px 8px 0;
       cursor: pointer;
-      transition: background-color 0.3s ease;
+      transition: all 0.3s ease;
       font-family: inherit;
+      box-shadow: 0 0 0 transparent;
     }
 
     .search-btn:hover {
       background-color: #3b5cd3;
+      box-shadow: 0 0 12px #3b5cd3;
     }
 
     .buttons {
@@ -209,6 +239,26 @@
       color: white;
       box-shadow: 0 4px 8px rgba(0,0,0,0.1);
       transition: transform 0.2s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
+      transform: scale(0);
+      opacity: 0;
+      transition: transform 0.6s ease, opacity 0.6s ease;
+    }
+
+    .card:hover::after {
+      transform: scale(1);
+      opacity: 1;
     }
 
     .card:hover {
@@ -262,6 +312,13 @@
       padding: 1.2rem;
       border-radius: 10px;
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: default;
+    }
+
+    .testimonial-box:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
     }
 
     .testimonial-box p {
@@ -305,6 +362,7 @@
       opacity: 0;
       transform: translateY(20px);
       animation: fadeIn 1s ease-out forwards;
+     
     }
 
     @keyframes fadeIn {
@@ -355,6 +413,7 @@
       }
     }
   </style>
+</head>
 </head>
 <body>
   <header>
@@ -410,7 +469,7 @@
         <h3>🗺️ Itineraries</h3>
         <p>Suggested travel plans for your visit</p>
       </a>
-      <a href="hotels.html" class="card" style="background: linear-gradient(135deg, #1e3a8a, #1e293b);">
+      <a href="hotels.html"  class="card" style="background: linear-gradient(135deg, #1e3a8a, #1e293b);">
         <h3>🛏️ Hotels & Homestays</h3>
         <p>Best accommodations for a comfortable stay</p>
       </a>

@@ -1,99 +1,82 @@
- <img src="gallery/1.jpg" alt="">
-      <img src="gallery/2.jpg" alt="">
-      <img src="gallery/3.jpg" alt="">
-      <img src="gallery/4.jpg" alt="">
-      <img src="gallery/5.jpg" alt="">
-      <img src="gallery/6.jpg" alt="">
-      <img src="" alt="">
-      <img src="" alt="">
-      <img src="" alt="">
-      <img src="" alt="">
-      <img src="" alt="">
-      <img src="" alt="">
-      <img src="" alt="">
-      <img src="" alt="">
-      <img src="" alt="">
-      <img src="" alt="">
-      <img src="" alt="">
-      <img src="" alt="">
-      <img src="" alt="">
-      <img src="" alt="">
-      <img src="" alt="">
-      <img src="" alt="">
-      <img src="" alt="">
-      <img src="" alt="">
-      <img src="" alt="">
-      <img src="" alt="">
-
-
-
-
-
-
-
-      <section class="buttons">
-      <a href="places.html" class="card">📍 Famous Places</a>
-      <a href="itineraries.html" class="card">🗓️ Itineraries</a>
-      <a href="hotels.html" class="card">🛏️  Hotels & Homestays</a>
-      <a href="tips.html" class="card">🧭 Travel Tips</a>
-    </section>
-
-
-
-
-
-     <div class="search-box">
-    <input type="text" id="searchInput" placeholder="Search..." />
-    <button class="search-btn" onclick="handleSearch()">Search</button>
-  </div>
-
-<script>
-  function handleSearch() {
-    const query = document.getElementById("searchInput").value.trim();
-    if (query !== "") {
-      const googleSearchURL = `https://www.google.com/search?q=${encodeURIComponent(query + " in Kanyakumari")}`;
-      window.open(googleSearchURL, "_blank");
-    } else {
-      alert("Please enter a search term.");
-    }
-  }
-
-
-
-
-  https://youtu.be/-t2W6H3K1Ws?si=urPpTJB2ZIpj9W0a
-
-
-
-
-
-
-
-
-
-
-
-  <!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Visit Kanyakumari</title>
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       font-family: 'Segoe UI', sans-serif;
       margin: 0;
       padding: 0;
-      background: #fafafa;
-      color: #222;
+      background: var(--bg);
+      color: var(--text);
+      transition: background 0.3s ease, color 0.3s ease;
     }
 
+    :root {
+      --bg: #fafafa;
+      --text: #222;
+      --card-bg: #ffffff;
+      --card-shadow: rgba(0,0,0,0.1);
+    }
+
+    html[data-theme="dark"] {
+      --bg: #121212;
+      --text: #f5f5f5;
+      --card-bg: #1e1e1e;
+      --card-shadow: rgba(255,255,255,0.05);
+    }
+
+    /* Loader */
+    #loader {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background: var(--bg);
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      z-index: 2000;
+    }
+
+    .spinner {
+      border: 6px solid #ddd;
+      border-top: 6px solid #1e40af;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      animation: spin 1s linear infinite;
+      margin-right: 1rem;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* Header */
     header {
       display: flex;
       justify-content: space-between;
+      align-items: center;
       padding: 1rem 2rem;
-      background: #fff;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      background: var(--card-bg);
+      box-shadow: 0 2px 5px var(--card-shadow);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
 
     .logo {
@@ -101,10 +84,15 @@
       font-size: 1.2rem;
     }
 
+    nav {
+      display: flex;
+      gap: 1rem;
+    }
+
     nav a {
-      margin: 0 1rem;
       text-decoration: none;
-      color: #333;
+      color: var(--text);
+      font-weight: 500;
     }
 
     nav a.active {
@@ -112,287 +100,143 @@
       font-weight: bold;
     }
 
-    main {
-      padding: 2rem;
-    }
-
-    h1, h2 {
-      text-align: center;
-      margin-bottom: 0.5rem;
-    }
-
-    .hero p {
-      text-align: center;
-      max-width: 600px;
-      margin: 0 auto 2rem;
-    }
-
-    /* searchbar */
-.search-box {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 20px;
-}
-
-.search-box input {
-  padding: 12px 16px;
-  font-size: 16px;
-  width: 280px;
-  border: 2px solid #1e3a8a;
-  border-radius: 8px 0 0 8px;
-  outline: none;
-  font-family: inherit;
-}
-
-.search-btn {
-  padding: 12px 20px;
-  background-color: #1e3a8a;
-  color: white;
-  font-size: 16px;
-  border: 2px solid #1e3a8a;
-  border-left: none;
-  border-radius: 0 8px 8px 0;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  font-family: inherit;
-}
-
-.search-btn:hover {
-  background-color: #3b5cd3;
-}
-
-
-
-    .buttons {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.2rem;
-      margin: 2rem 0;
-    }
-
-    .card {
-      display: block;
-      text-decoration: none;
-      background: linear-gradient(135deg, #3b82f6, #1e40af);
-      padding: 1.2rem;
-      border-radius: 12px;
-      color: white;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      transition: transform 0.2s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-4px);
-    }
-
-    .card h3 {
-      margin: 0;
-      font-size: 1.2rem;
-    }
-
-    .card p {
-      margin-top: 0.5rem;
-      font-size: 0.95rem;
-    }
-
-    .image {
-      text-align: center;
-      margin: 3rem 0;
-    }
-
-    .image img {
-      max-width: 90%;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
-
-    .weather-widget, .events-section, .testimonials, .faq {
-      margin: 3rem auto;
-      max-width: 800px;
-      text-align: center;
-    }
-
-    .weather-box {
-      display: inline-block;
-      background: #e3f2fd;
-      padding: 1rem 2rem;
-      border-radius: 10px;
-      font-size: 1.1rem;
-      margin-top: 0.5rem;
-    }
-
-    .event-list {
-      list-style: none;
-      padding: 0;
-    }
-
-    .event-list li {
-      background: #f1f8e9;
-      padding: 0.8rem;
-      margin: 0.5rem auto;
-      border-radius: 8px;
-      max-width: 500px;
-    }
-
-    .testimonial-box {
-      background: #fff8e1;
-      padding: 1rem 2rem;
-      margin: 1rem auto;
-      border-left: 5px solid #ffb300;
-      max-width: 600px;
-      font-style: italic;
-      border-radius: 6px;
-    }
-
-    .faq details {
-      background: #e0f7fa;
-      padding: 1rem;
-      margin-bottom: 1rem;
-      border-radius: 8px;
-      text-align: left;
-    }
-
-    .faq summary {
-      font-weight: bold;
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
       cursor: pointer;
     }
-    footer {
-      margin-top: 3rem;
-      padding: 2rem;
-      text-align: center;
-      color: #888;
-      font-size: 0.9rem;
+
+    .menu-toggle span {
+      width: 25px;
+      height: 3px;
+      background: var(--text);
+      margin: 4px 0;
     }
+
+    .mobile-nav {
+      display: none;
+      flex-direction: column;
+      background: var(--card-bg);
+      position: absolute;
+      top: 60px;
+      right: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px var(--card-shadow);
+    }
+
+    .mobile-nav a {
+      padding: 0.75rem 1.2rem;
+      border-bottom: 1px solid #eee;
+      text-decoration: none;
+      color: var(--text);
+    }
+
+    .dark-toggle {
+      cursor: pointer;
+      background: transparent;
+      border: 2px solid #1e40af;
+      color: #1e40af;
+      border-radius: 8px;
+      padding: 6px 12px;
+      margin-left: 1rem;
+      transition: background 0.3s ease;
+    }
+
+    .dark-toggle:hover {
+      background: #1e40af;
+      color: white;
+    }
+
+    /* Existing styles (you can keep your CSS below unchanged, or adapt backgrounds to use var(--bg), var(--card-bg), etc.) */
+    /* ... [keep your original styles here, replacing hardcoded colors with variables where needed] ... */
 
   </style>
 </head>
-
 <body>
+  <div id="loader">
+    <div class="spinner"></div>
+    <span>Loading...</span>
+  </div>
+
   <header>
     <div class="logo">VisitKanyakumari.in</div>
+    <div class="menu-toggle" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
     <nav>
-      <a href="places.html" >Places to Visit</a>
-      <a href="#">Plan Your Trip</a>
+      <a href="places.html">Places to Visit</a>
+      <a href="itineraries.html">Plan Your Trip</a>
       <a href="hotels.html">Hotels</a>
       <a href="travel-tips.html">Travel Tips</a>
     </nav>
+    <button class="dark-toggle" onclick="toggleDarkMode()">🌙 Toggle Dark</button>
+    <div class="mobile-nav" id="mobileMenu">
+      <a href="places.html">Places to Visit</a>
+      <a href="itineraries.html">Plan Your Trip</a>
+      <a href="hotels.html">Hotels</a>
+      <a href="travel-tips.html">Travel Tips</a>
+    </div>
   </header>
 
-  <main>
-    <section class="hero">
-      <h1>Explore Kanyakumari</h1>
-      <p>Discover the southernmost tip of India, known for its stunning sunrises, historic landmarks, and vibrant culture.</p>
-    </section>
+  <!-- Keep your existing HTML from here (weather-widget, main sections, etc.) -->
 
-    
-     <div class="search-box">
-    <input type="text" id="searchInput" placeholder="Search..." />
-    <button class="search-btn" onclick="handleSearch()">Search</button>
-  </div>
-
-<script>
-  function handleSearch() {
-    const query = document.getElementById("searchInput").value.trim();
-    if (query !== "") {
-      const googleSearchURL = `https://www.google.com/search?q=${encodeURIComponent(query + " in Kanyakumari")}`;
-      window.open(googleSearchURL, "_blank");
-    } else {
-      alert("Please enter a search term.");
-    }
-  }
-  </script>
-
-    <section class="buttons">
-      <a href="places.html" class="card">
-        <h3>📍 Famous Places</h3>
-        <p>Top attractions and must-see locations in Kanyakumari</p>
-      </a>
-      <a href="itineraries.html" class="card" style="background: linear-gradient(135deg, #38bdf8, #0ea5e9);">
-        <h3>🗺️ Itineraries</h3>
-        <p>Suggested travel plans for your visit</p>
-      </a>
-      <a href="hotels.html" class="card" style="background: linear-gradient(135deg, #1e3a8a, #1e293b);">
-        <h3>🛏️ Hotels & Homestays</h3>
-        <p>Best accommodations for a comfortable stay</p>
-      </a>
-      <a href="travel-tips.html" class="card" style="background: linear-gradient(135deg, #14b8a6, #0f766e);">
-        <h3>💡 Travel Tips</h3>
-        <p>Essential info and advice for travelers</p>
-      </a>
-    </section>
-
-    <section class="image">
-      <h2>Explore Attractions</h2>
-      <img src="assets/kanyakumari.jpg" alt="Kanyakumari view" />
-    </section>
-
-  <section class="weather-widget">
-  <h2>🌤️ Current Weather</h2>
-  <div class="weather-box" id="weather">
-    Loading weather...
-  </div>
-</section>
-<script>
-  const apiKey = '6d200cba495975e701c8790be5426431'; // Replace with your actual API key
-  const city = 'Kanyakumari';
-
-  async function getWeather() {
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
-    try {
-      const response = await fetch(url);
-      const data = await response.json();
-      const temp = Math.round(data.main.temp);
-      const condition = data.weather[0].description;
-      const icon = data.weather[0].icon;
-
-      document.getElementById("weather").innerHTML = `
-        <p><strong>${city}</strong></p>
-        <p>${temp}°C | ${condition}</p>
-        <img src="https://openweathermap.org/img/wn/${icon}@2x.png" alt="${condition}" />
-      `;
-    } catch (error) {
-      document.getElementById("weather").innerText = "Weather data not available.";
-    }
-  }
-
-  getWeather();
-</script>
-
-    <section class="events-section">
-      <h2>📅 Upcoming Events</h2>
-      <ul class="event-list">
-        <li><strong>June 30:</strong> Cultural Fest at Beach Park</li>
-        <li><strong>July 15:</strong> Sunset Photography Walk</li>
-        <li><strong>August 5:</strong> Temple Art Expo</li>
-      </ul>
-    </section>
-
-    <section class="testimonials">
-      <h2>🌟 Traveler Reviews</h2>
-      <div class="testimonial-box">
-        <p>"Absolutely stunning place! The sunrise is unforgettable." – Arjun S.</p>
-      </div>
-      <div class="testimonial-box">
-        <p>"Clean beaches and very peaceful temples." – Neha M.</p>
-      </div>
-    </section>
-
-    <section class="faq">
-      <h2>❓ Frequently Asked Questions</h2>
-      <details>
-        <summary>What is the best time to visit?</summary>
-        <p>October to March offers the best weather for travel.</p>
-      </details>
-      <details>
-        <summary>Is it safe for solo travelers?</summary>
-        <p>Yes, Kanyakumari is considered safe, especially around main attractions.</p>
-      </details>
-    </section>
-  </main>
   <footer>
     <p>&copy; 2023 VisitKanyakumari.in | All rights reserved.</p>
+    <div>
+      <a href="https://www.instagram.com/shibu_822/">Instagram</a> |
+      <a href="#">Facebook</a> |
+      <a href="tel:8220215258">Contact</a>
+    </div>
   </footer>
-</body>
+
+  <script>
+    // Loader
+    window.addEventListener('load', () => {
+      document.getElementById('loader').style.display = 'none';
+    });
+
+    // Toggle Mobile Menu
+    function toggleMenu() {
+      const menu = document.getElementById('mobileMenu');
+      menu.classList.toggle('show');
+    }
+
+    // Toggle Dark Mode
+    function toggleDarkMode() {
+      const html = document.documentElement;
+      const theme = html.getAttribute('data-theme');
+      html.setAttribute('data-theme', theme === 'light' ? 'dark' : 'light');
+      localStorage.setItem('theme', html.getAttribute('data-theme'));
+    }
+
+    // Apply saved theme
+    window.addEventListener('DOMContentLoaded', () => {
+      const savedTheme = localStorage.getItem('theme') || 'light';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+    });
+
+    // Weather API (already included)
+    const apiKey = '6d200cba495975e701c8790be5426431';
+    const city = 'Kanyakumari';
+    async function getWeather() {
+      const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
+      try {
+        const response = await fetch(url);
+        const data = await response.json();
+        const temp = Math.round(data.main.temp);
+        const condition = data.weather[0].description;
+        const icon = data.weather[0].icon;
+
+        document.getElementById("weather").innerHTML = `
+          <p><strong>${city}</strong></p>
+          <p>${temp}°C | ${condition}</p>
+          <img src="https://openweathermap.org/img/wn/${icon}@2x.png" alt="${condition}" />
+        `;
+      } catch (error) {
+        document.getElementById("weather").innerText = "Weather data not available.";
+      }
+    }
+    getWeather();
+  </script>
 </body>
 </html>
